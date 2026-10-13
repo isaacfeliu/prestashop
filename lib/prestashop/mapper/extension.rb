@@ -97,7 +97,7 @@ module Prestashop
         #   Car.update_payload(1, name: 'BMW 7') # => <prestashop xmlns:xlink="http://www.w3.org/1999/xlink"><car><name><![CDATA[BMW 7]]></name></car></prestashop>
         #
         def update_payload client, id, options = {}
-          Api::Converter.build(self.resource, self.model, update_hash(client, id, options))
+          Api::Converter.build(self.resource, self.model, update_hash(client, id, options).except("new"))
         end
 
         # Update model, with class resource by +id+ and given updates
